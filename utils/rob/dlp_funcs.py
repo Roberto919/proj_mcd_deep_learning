@@ -21,7 +21,7 @@ import numpy as np
 
 ## Ancillary modules
 
-from houses_params import features_dict
+from utils.rob.dlp_params import features_dict
 
 
 
