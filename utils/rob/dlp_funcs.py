@@ -139,7 +139,7 @@ def clean_data(data):
 
 
     ## Simplifying tags based on rule
-    # data_clean["MSZoning"] = np.where(data_clean["MSZoning"] == "RL", 1, 0) #solo ahí se ven diferencias
+    data_clean["MSZoning"] = np.where(data_clean["MSZoning"] == "RL", 1, 0) #solo ahí se ven diferencias
 
 
     ## Selecting only the columns marked as relevant == True
@@ -149,6 +149,10 @@ def clean_data(data):
 
     ## Convert columns to objective data type
     for col in data_clean:
+
+        if (col == "TotalBsmtSF") | (col == "GarageCars") | (col == "GarageArea"):
+            data_clean[col].fillna(0, inplace=True)
+
         data_clean[col] = data_clean[col].astype(features_dict[col]["data_obj_type"])
 
 
