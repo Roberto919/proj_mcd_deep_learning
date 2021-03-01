@@ -131,15 +131,15 @@ def clean_data(data):
 
 
     ## Eliminating houses with "Gr Liv Area" larger than 4,000
-    data_clean = data_clean[data_clean["Gr Liv Area"] < 4_000]
+    # data_clean = data_clean[data_clean["GrLivArea"] < 4_000]
 
 
     ## Maintain "Sale Condition" with tag "Normal"
-    data_clean = data_clean[data_clean["Sale Condition"] == "Normal"]
+    # data_clean = data_clean[data_clean["SaleCondition"] == "Normal"]
 
 
     ## Simplifying tags based on rule
-    data_clean["MS Zoning"] = np.where(data_clean["MS Zoning"] == "RL", 1, 0) #solo ahí se ven diferencias
+    # data_clean["MSZoning"] = np.where(data_clean["MSZoning"] == "RL", 1, 0) #solo ahí se ven diferencias
 
 
     ## Selecting only the columns marked as relevant == True
@@ -157,7 +157,7 @@ def clean_data(data):
 
 
 ## Transforming target variable
-def transform_target_var(data, config="ap"):
+def transform_target_var(data):
     """
     Transforming target variable
         args:
