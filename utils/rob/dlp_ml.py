@@ -75,9 +75,11 @@ cat_pipeline = Pipeline([
 
 ##
 def get_net():
+
     net = tf.keras.models.Sequential()
-    net.add(tf.keras.layers.Dense(
-        1, kernel_regularizer=tf.keras.regularizers.l2(weight_decay)))
+
+    net.add(tf.keras.layers.Dense(1, kernel_regularizer=tf.keras.regularizers.l2(weight_decay)))
+
     return net
 
 

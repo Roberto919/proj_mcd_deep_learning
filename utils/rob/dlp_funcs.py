@@ -59,14 +59,28 @@ def features_dictrionary(data):
             -
     """
 
+    ## Function for objevtive data type
+    def obj_dt(dt):
+        """
+        :param dt:
+        :return:
+        """
+        if dt == "object":
+            res = "category"
+        else:
+            res = dt
+        return res
+
+
     def_dict = {}
 
     for col in data.columns:
         def_dict[col] = {
-            "relevant": False,
-            "data_type": str(data[col].dtype),
-            "null_perc": round(data[col].isnull().sum()/data.shape[0], 2),
-            "len_uniques": len(data[col].unique())
+            "relevant": True,
+            "data_default_type": str(data[col].dtype),
+            "data_obj_type": obj_dt(str(data[col].dtype)),
+            "ml_label": False,
+            "pipeline": x
         }
 
     json_dump_dict(def_dict)
@@ -139,7 +153,7 @@ def clean_data(data):
 
 
     ## Simplifying tags based on rule
-    data_clean["MSZoning"] = np.where(data_clean["MSZoning"] == "RL", 1, 0) #solo ahí se ven diferencias
+    # data_clean["MSZoning"] = np.where(data_clean["MSZoning"] == "RL", 1, 0) #solo ahí se ven diferencias
 
 
     ## Selecting only the columns marked as relevant == True
@@ -147,13 +161,26 @@ def clean_data(data):
     data_clean = data_clean.loc[:, rc]
 
 
-    ## Convert columns to objective data type
+    ## Convert columns to objective data type and inputing data
     for col in data_clean:
 
-        if (col == "TotalBsmtSF") | (col == "GarageCars") | (col == "GarageArea"):
-            data_clean[col].fillna(0, inplace=True)
+        # print(col)
 
+        ## Imputing data based on type
+        if (data_clean[col].dtype == "int64") | (data_clean[col].dtype == "float64"):
+            data_clean[col] = data_clean[col].fillna(data_clean[col].mean())
+
+        elif data_clean[col].dtype == "object":
+            # data_clean[col] = data_clean[col].fillna(data_clean[col].mode()[0])
+            data_clean[col] = data_clean[col].mode()[0]
+
+        else:
+            raise ValueError("tipo de dato no especificado")
+
+        ## Converting to objective data type
         data_clean[col] = data_clean[col].astype(features_dict[col]["data_obj_type"])
+
+        # print("    :D")
 
 
     return data_clean
@@ -166,7 +193,6 @@ def transform_target_var(data):
     Transforming target variable
         args:
             data (dataframe): data with target variable included.
-            config (string): configuration of whether the function will be applied or
         returns:
             data (dataframe): data with target variable transformed.
     """
