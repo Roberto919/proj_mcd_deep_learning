@@ -34,7 +34,7 @@ features_dict = {
         "pipeline": "cat_pipe"
     },
     "LotFrontage": {
-        "relevant": True,
+        "relevant": False,
         "data_default_type": "float64",
         "data_obj_type": "float64",
         "ml_label": False,
@@ -412,28 +412,28 @@ features_dict = {
         "pipeline": "num_pipe"
     },
     "FireplaceQu": {
-        "relevant": True,
+        "relevant": False,
         "data_default_type": "object",
         "data_obj_type": "category",
         "ml_label": False,
         "pipeline": "cat_pipe"
     },
     "GarageType": {
-        "relevant": True,
+        "relevant": False,
         "data_default_type": "object",
         "data_obj_type": "category",
         "ml_label": False,
         "pipeline": "cat_pipe"
     },
     "GarageYrBlt": {
-        "relevant": True,
+        "relevant": False,
         "data_default_type": "float64",
         "data_obj_type": "float64",
         "ml_label": False,
         "pipeline": "num_pipe"
     },
     "GarageFinish": {
-        "relevant": True,
+        "relevant": False,
         "data_default_type": "object",
         "data_obj_type": "category",
         "ml_label": False,
@@ -454,14 +454,14 @@ features_dict = {
         "pipeline": "num_pipe"
     },
     "GarageQual": {
-        "relevant": True,
+        "relevant": False,
         "data_default_type": "object",
         "data_obj_type": "category",
         "ml_label": False,
         "pipeline": "cat_pipe"
     },
     "GarageCond": {
-        "relevant": True,
+        "relevant": False,
         "data_default_type": "object",
         "data_obj_type": "category",
         "ml_label": False,
@@ -517,21 +517,21 @@ features_dict = {
         "pipeline": "num_pipe"
     },
     "PoolQC": {
-        "relevant": True,
+        "relevant": False,
         "data_default_type": "object",
         "data_obj_type": "category",
         "ml_label": False,
         "pipeline": "cat_pipe"
     },
     "Fence": {
-        "relevant": True,
+        "relevant": False,
         "data_default_type": "object",
         "data_obj_type": "category",
         "ml_label": False,
         "pipeline": "cat_pipe"
     },
     "MiscFeature": {
-        "relevant": True,
+        "relevant": False,
         "data_default_type": "object",
         "data_obj_type": "category",
         "ml_label": False,
