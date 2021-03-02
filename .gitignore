@@ -1,0 +1,18 @@
+## Mac OS
+.DS_Store
+
+
+## Pycharm
+.idea/
+
+
+## Data
+*csv
+
+
+## Jupyter
+.ipynb_checkpoints/
+
+
+## Python
+__pycache__/
