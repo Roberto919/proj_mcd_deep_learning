@@ -24,7 +24,7 @@ features_dict = {
         "data_default_type": "int64",
         "data_obj_type": "int64",
         "ml_label": False,
-        "pipeline": "cat_pipe"
+        "pipeline": "num_pipe"
     },
     "MSZoning": {
         "relevant": True,
